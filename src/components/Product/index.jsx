@@ -7,6 +7,8 @@ import useFilter from '../../hooks/useFilter'
 import axios from '../../api/axios'
 import Loader from '../Loader'
 import useSearch from '../../hooks/useSearch'
+import { Pagination, styled } from '@mui/material'
+import { orange } from '@mui/material/colors'
 
 const MobileSideNav = () => {
     const { filtermenu } = useFilter()
@@ -20,17 +22,19 @@ const Products = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isProductLoading, setIsProductLoading] = useState()
     const { values } = useSearch()
-    const { sort, fil } = useFilter()
+    const { sort, fil, setSort, page, setPage } = useFilter()
     const { favItems } = useFavourites()
+    const [total, setTotal] = useState()
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setIsProductLoading(true)
                 await axios
-                    .get(`/api/products?query=${values?.keyword}&sort=${sort?.name}&order=${sort?.order}`)
+                    .get(`/api/products?query=${values?.keyword}&sort=${sort?.name}&order=${sort?.order}&page=${page}`)
                     .then((res) => {
-                        setProduct(res.data)
+                        setProduct(res.data.data)
+                        setTotal(Math.ceil(res.data.totalCount / 8))
                         setIsProductLoading(false)
                         setIsLoading(false)
                     })
@@ -39,7 +43,31 @@ const Products = () => {
             }
         }
         fetchData()
-    }, [values, sort?.name, sort?.order, fil])
+    }, [values, sort?.page, sort?.name, sort?.order, fil, page])
+
+    const StyledPagination = styled(Pagination)({
+        ul: {
+            // "& .MuiPaginationItem-root": {
+            //     backgroundColor: 'orange',
+            // },
+            '& .Mui-selected': {
+                backgroundColor: '#00ed64',
+                borderRadius: '.2rem',
+                color: 'black',
+                fontWeight: '500',
+                border: '1px solid #00684a',
+                transition: '.3s ease',
+                '&:hover': {
+                    backgroundColor: "#00ed64",
+                    borderRadius: '2rem'
+                }
+            }
+        }
+    })
+
+    // const handlePageChange = (e) => {
+    //     setPage(e.target.value)
+    // }
 
     return (
         isLoading ? (
@@ -87,6 +115,9 @@ const Products = () => {
                             }
                         </div>
                     </div>
+                </div>
+                <div className="pagination_container">
+                    <StyledPagination count={total} defaultPage={page} shape='rounded' size='large' siblingCount={0} onChange={(event, value) => setPage(value)} />
                 </div>
             </Fragment>
         )

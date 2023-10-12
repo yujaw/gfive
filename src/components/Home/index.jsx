@@ -22,8 +22,8 @@ const Home = () => {
         await axios
           .get('/api/products')
           .then((res) => {
-            setProduct(res.data)
-            setAd(res.data[2])
+            setProduct(res.data.data)
+            setAd(res.data.data[2])
           })
       } catch (err) {
         console.log(err)

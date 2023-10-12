@@ -2954,6 +2954,12 @@ img {
   body .products_container .sidenav .component .cont .items input[type=checkbox] {
     margin: 0 0.25em 0 0;
   }
+  body .pagination_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0 1.5rem 0;
+  }
   body .info-container {
     width: 100vw;
   }

@@ -14,6 +14,8 @@ export const FilterProvider = ({ children }) => {
         order: '1',
     })
 
+    const [page, setPage] = useState('1')
+
     const toggleChip = (items) => {
         setChip((currItems) => {
             if (currItems.find((item) => item === items) == null) {
@@ -47,7 +49,9 @@ export const FilterProvider = ({ children }) => {
                 sort,
                 toggleOrder,
                 chip,
-                toggleChip
+                toggleChip,
+                page,
+                setPage
             }
         }>
             {children}

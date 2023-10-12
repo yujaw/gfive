@@ -17,7 +17,7 @@ export const ToastProvider = ({ children }) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "dark",
         });
     }
 
@@ -30,7 +30,7 @@ export const ToastProvider = ({ children }) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "dark",
         });
     }
 
