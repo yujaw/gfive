@@ -5589,4 +5589,24 @@ img {
   100% {
     background-color: hsl(200, 20%, 95%);
   }
+}
+.Toastify .Toastify__toast-container {
+  border-radius: 0;
+}
+.Toastify .Toastify__toast-container .Toastify__toast {
+  background: #00ed64;
+  border-radius: 0;
+  border: 0.2rem solid #061621;
+}
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__toast-body div {
+  color: black;
+}
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__toast-body div svg {
+  fill: black;
+}
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__close-button svg {
+  fill: black;
+}
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__progress-bar {
+  background-color: #00684a;
 }/*# sourceMappingURL=styles.css.map */
