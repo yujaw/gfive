@@ -12,9 +12,9 @@ const useRefreshToken = () => {
         })
         setAuth((prev) => {
             // console.log(`Auth: ${JSON.stringify(auth)}`)
-            console.log(`Prev: ${JSON.stringify(prev)}`)
+            // console.log(`Prev: ${JSON.stringify(prev)}`)
             // console.log(`AccessTOken: ${response.data.accessToken}`)
-            console.log({ ...prev, accessToken: response.data.accessToken, email: response.data.email })
+            // console.log({ ...prev, accessToken: response.data.accessToken, email: response.data.email })
             return { ...prev, accessToken: response.data.accessToken, email: response.data.email, profileImage: response.data.profileImage }
         })
         return response.data.accessToken

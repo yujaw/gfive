@@ -28,7 +28,18 @@ const AccountInfo = () => {
         e.preventDefault()
         try {
             await axiosPrivate
-                .post(`/api/users/${auth?.email}`, { user })
+                .put('/api/users',
+                    {
+                        fname: user?.fname,
+                        lname: user?.lname,
+                        address: user?.address,
+                        city: user?.city,
+                        postalcode: user?.postalcode
+                    }
+                )
+                .then(() => {
+                    window.location.reload()
+                })
         } catch (err) {
             console.log(err)
         }
@@ -74,7 +85,7 @@ const AccountInfo = () => {
                     </div>
                 </div>
                 <div className='button'>
-                    <button className='secondary'>Reset</button>
+                    <button className='secondary' >Reset</button>
                     <button className='primary' onClick={handleSubmit}>Save</button>
                 </div>
             </div>
