@@ -534,8 +534,9 @@ img {
   }
   body .store_banner .store {
     width: 97.5%;
+    height: 100%;
     padding: 1em;
-    overflow-x: hidden;
+    overflow: hidden;
   }
   body .store_banner .store .title {
     font-family: "Value Serif Pro";
@@ -544,7 +545,6 @@ img {
   }
   body .store_banner .store .product_swiper {
     width: 100%;
-    height: 33em;
     padding: 1em 1em 2em 1em;
     display: flex;
     position: relative;

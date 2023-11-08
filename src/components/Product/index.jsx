@@ -8,7 +8,6 @@ import axios from '../../api/axios'
 import Loader from '../Loader'
 import useSearch from '../../hooks/useSearch'
 import { Pagination, styled } from '@mui/material'
-import { orange } from '@mui/material/colors'
 
 const MobileSideNav = () => {
     const { filtermenu } = useFilter()
