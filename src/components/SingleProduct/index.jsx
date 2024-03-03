@@ -56,10 +56,10 @@ const SingleProduct = () => {
                                         thumbs={{ swiper: productImage && !productImage.destroyed ? productImage : null }}
                                         modules={[FreeMode, Thumbs, Navigation]}
                                         className="product-image-swiper"
-                                        navigation={{
-                                            nextEl: '.nav-el-next',
-                                            prevEl: '.nav-el-prev'
-                                        }}
+                                    // navigation={{
+                                    //     nextEl: '.nav-el-next',
+                                    //     prevEl: '.nav-el-prev'
+                                    // }}
                                     >
                                         {
                                             images.map((items, index) => (
@@ -70,19 +70,20 @@ const SingleProduct = () => {
                                         }
                                     </Swiper>
                                     <div className="swiper-nav">
-                                        <div className="nav nav-el-prev">
+                                        {/* <div className="nav nav-el-prev">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 320 512">
                                                 <path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z" />
                                             </svg>
-                                        </div>
+                                        </div> */}
                                         <Swiper
                                             onSwiper={setProductImage}
                                             // loop={true}
                                             direction='vertical'
                                             spaceBetween={10}
-                                            slidesPerView={4}
+                                            slidesPerView={3.5}
                                             freeMode={true}
                                             watchSlidesProgress={true}
+                                            watchSlidesVisibility={true}
                                             modules={[FreeMode, Navigation, Thumbs]}
                                             className="product-image-thumb-swiper"
                                         >
@@ -96,11 +97,11 @@ const SingleProduct = () => {
                                                 ))
                                             }
                                         </Swiper>
-                                        <div className="nav nav-el-next">
+                                        {/* <div className="nav nav-el-next">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 320 512">
                                                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
                                             </svg>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className='desc'>

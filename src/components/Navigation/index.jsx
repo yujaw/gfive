@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth'
 
 const Search = () => {
 
-    const { values, setValues } = useSearch()
+    const { values, setValues, setTopSearch } = useSearch()
     const navigate = useNavigate()
 
     const handleInput = (e) => {
@@ -16,6 +16,7 @@ const Search = () => {
     const handleSubmit = async (e) => {
         if (e.key === 'Enter') {
             navigate(`/products`)
+            setTopSearch(true)
         }
     }
 

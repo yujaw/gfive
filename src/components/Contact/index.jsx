@@ -35,7 +35,7 @@ const Contact = () => {
 
     const postData = async () => {
         const { name, email, phone, msg } = contact
-        if(!name || !email || !msg) return errorNotification("Input fields cannot be left empty")
+        if (!name || !email || !msg) return errorNotification("Input fields cannot be left empty")
         try {
             await axios
                 .post('/api/comment',
@@ -85,8 +85,9 @@ const Contact = () => {
                                     (
                                         <div className="title_cont">
                                             <div className="utils">
-                                                <div className="dot" />
-                                                <div className="dot" />
+                                                <div className="ico" />
+                                                <div className="ico" />
+                                                <div className="ico" />
                                             </div>
                                             <span className="title">contact us</span>
                                         </div>
@@ -127,8 +128,9 @@ const Contact = () => {
                         <div className="right">
                             <div className="title_cont">
                                 <div className="utils">
-                                    <div className="dot" />
-                                    <div className="dot" />
+                                    <div className="ico" />
+                                    <div className="ico" />
+                                    <div className="ico" />
                                 </div>
                                 <span className="title">
                                     send your comments
@@ -149,7 +151,7 @@ const Contact = () => {
                                                     : null
                                             }
                                         </label>
-                                        <input name="name" placeholder="full name" value={contact.email} type="text" onChange={handleChange} />
+                                        <input name="name" placeholder="full name" value={contact.name} type="text" onChange={handleChange} />
                                     </div>
                                     <span className="req">
                                         This Field is Required*

@@ -48,31 +48,35 @@ const Home = () => {
       <Fragment>
         <div className='offers'>
           <div className='back'>
-            <div className="filter" />
+            <div className="filter">
+              <span>
+                G-Five
+              </span>
+            </div>
           </div>
         </div>
         <div className='features'>
           <Link to={'/products'} className='category'>
             <div className='img_container'>
-              <img src='./images/office-chair.png' alt='Category' />
+              <img src='./images/microchip-solid.svg' alt='Category' />
             </div>
             <div className='desc'><span>Components</span></div>
           </Link>
           <Link to={'/products'} className='category'>
             <div className='img_container'>
-              <img src='./images/laptop.png' alt='Category' />
+              <img src='./images/laptop-solid.svg' alt='Category' />
             </div>
             <div className='desc'><span>Laptops</span></div>
           </Link>
           <Link to={'/products'} className='category'>
             <div className='img_container'>
-              <img src='./images/headphones.png' alt='Category' />
+              <img src='./images/headphones-simple-solid.svg' alt='Category' />
             </div>
             <div className='desc'><span>Accessories</span></div>
           </Link>
           <Link to={'/products'} className='category'>
             <div className='img_container'>
-              <img src='./images/computer.png' alt='Category' />
+              <img src='./images/computer-solid.svg' alt='Category' />
             </div>
             <div className='desc'><span>Desktops</span></div>
           </Link>
@@ -143,7 +147,7 @@ const Home = () => {
               <div className='ad'>
                 <div className='left'>
                   <div className='title'>{ad.name}</div>
-                  <div className='desc'>{ad.name}</div>
+                  <div className='desc'>The iPhone 15 Pro Max: Exceptional performance, stunning camera capabilities, immersive display, and innovative features redefine smartphone excellence.</div>
                   <button className='btn' onClick={() => navigate(`/products/${ad._id}`)}>View</button>
                 </div>
                 <div className='right'>

@@ -2,8 +2,6 @@ import React from 'react'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import formatCurrency from '../../utilities/formatCurrency'
 import { Link } from 'react-router-dom'
-import { Rating } from '@mui/material'
-import { FaStar } from 'react-icons/fa'
 import useShoppingCart from '../../hooks/useShoppingCart'
 import useFavourites from '../../hooks/useFavourites'
 
@@ -38,14 +36,14 @@ const StoreItem = ({ _id, name, price, rating, fav, image }) => {
                     </span>
                 </Link>
                 <div className="more">
-                    <Rating
+                    {/* <Rating
                         className="ratings"
                         defaultValue={parseInt(rating)}
                         precision={0.5}
                         icon={<FaStar className='icon selected' />}
                         emptyIcon={<FaStar className='icon unselected' />}
                         readOnly
-                    />
+                    /> */}
                     <span className="price">{formatCurrency(price)}</span>
                     <button className="buy" onClick={() => increaseCartQuantity(id, price)}>
                         Add to Cart
