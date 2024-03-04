@@ -138,12 +138,12 @@ const SingleProduct = () => {
                                         </div>
                                     </div> */}
                                     <div className='checkouts'>
-                                        <button type='submit' className='buy primary'>
+                                        {/* <button type='submit' className='buy primary'>
                                             Buy Now
-                                        </button>
-                                        {/* <button type='submit' className='add_cart secondary' onClick={() => increaseCartQuantity(id)}>
-                                            Add to Cart
                                         </button> */}
+                                        <button type='submit' className='buy primary' onClick={() => increaseCartQuantity(id)}>
+                                            Add to Cart
+                                        </button>
                                         <button className='wish' onClick={() => toggleFav(id)}>
                                             {
                                                 favItems.find(items => items === id)
@@ -151,7 +151,6 @@ const SingleProduct = () => {
                                                     : <BsHeart />
                                             }
                                         </button>
-                                        {/* <button onClick={() => refresh()}>Refresh</button> */}
                                     </div>
                                 </div>
                             </div>

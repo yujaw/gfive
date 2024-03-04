@@ -44,7 +44,7 @@ const Signup = () => {
     const [check, setCheck] = useState(false)
     const [errMsg, setErrMsg] = useState('errmsg')
 
-    const {errorNotification, successNotification} = useToast()
+    const { errorNotification, successNotification } = useToast()
 
     useEffect(() => {
         fnameRef.current.focus()
@@ -84,7 +84,7 @@ const Signup = () => {
             return
         }
 
-        if(!check) return errorNotification('You must agree our privacy policy and terms of service')
+        if (!check) return errorNotification('You must agree our privacy policy and terms of service')
 
         postData(fname, lname, pwd, email)
     }
@@ -234,8 +234,8 @@ const Signup = () => {
                                 disabled={!validFname || !validLname || !validEmail || !validPwd || !validMatch || !check}
                                 value="Sign Up"
                             />
-                            <div className="signup_footer">Have an account? <Link to='/signin'>Log in Now</Link></div>
                         </form>
+                        <div className="signup_footer">Have an account? <Link to='/signin'>Log in Now</Link></div>
                     </div>
                 </div>
             </div>

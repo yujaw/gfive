@@ -1293,18 +1293,6 @@ img {
   body .product-page-container .product .desc .info .rating-container .ratings .unselected {
     fill: #cdcdcd;
   }
-  body .product-page-container .product .desc .info .rating-container .wish {
-    margin-left: auto;
-    margin-right: 1.2em;
-  }
-  body .product-page-container .product .desc .info .rating-container .wish svg {
-    fill: #21313c;
-    cursor: pointer;
-    transition: 0.2s ease;
-  }
-  body .product-page-container .product .desc .info .rating-container .wish svg:hover {
-    fill: red;
-  }
   body .product-page-container .product .desc .price {
     margin: 0.75rem 0;
     font-size: 1.5451174289rem;
@@ -1369,6 +1357,9 @@ img {
   }
   body .product-page-container .product .desc .checkouts .wish {
     width: 4rem;
+    aspect-ratio: 1;
+  }
+  body .product-page-container .product .desc .checkouts .wish svg {
     aspect-ratio: 1;
   }
   body .product-page-container .product .desc .checkouts .filled {
@@ -2292,7 +2283,7 @@ img {
     padding: 3rem;
   }
   body .signup .signup_container .container {
-    width: 40%;
+    width: 42.5%;
   }
   body .signup .signup_container .container .header {
     width: 100%;
@@ -2414,6 +2405,7 @@ img {
     color: #d0342c;
   }
   body .signup .signup_container .container .signup_form .terms_container {
+    width: 100%;
     margin: 0 0.15rem;
     display: flex;
     align-items: center;
@@ -5669,7 +5661,7 @@ img {
 }
 .Toastify .Toastify__toast-container .Toastify__toast .Toastify__toast-body div {
   color: black;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
   text-transform: uppercase;
 }

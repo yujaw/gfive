@@ -21,7 +21,7 @@ const Products = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isProductLoading, setIsProductLoading] = useState()
     const { values } = useSearch()
-    const { sort, fil, setSort, page, setPage } = useFilter()
+    const { sort, fil, page, setPage } = useFilter()
     const { favItems } = useFavourites()
     const [total, setTotal] = useState()
 
@@ -46,9 +46,6 @@ const Products = () => {
 
     const StyledPagination = styled(Pagination)({
         ul: {
-            // "& .MuiPaginationItem-root": {
-            //     backgroundColor: 'orange',
-            // },
             '& .Mui-selected': {
                 backgroundColor: '#00ed64',
                 borderRadius: '.2rem',
@@ -63,10 +60,6 @@ const Products = () => {
             }
         }
     })
-
-    // const handlePageChange = (e) => {
-    //     setPage(e.target.value)
-    // }
 
     return (
         isLoading ? (
@@ -83,7 +76,6 @@ const Products = () => {
                         <CardNav />
                         <div className="products">
                             {
-                                // console.log(product)
                                 product.map((item, index) => (
                                     <div className='card' key={index}>
                                         {
@@ -116,7 +108,13 @@ const Products = () => {
                     </div>
                 </div>
                 <div className="pagination_container">
-                    <StyledPagination count={total} defaultPage={page} shape='rounded' size='large' siblingCount={0} onChange={(event, value) => setPage(value)} />
+                    <StyledPagination
+                        count={total}
+                        defaultPage={parseInt(page)}
+                        shape='rounded'
+                        size='large'
+                        onChange={(event, value) => setPage(value)}
+                    />
                 </div>
             </Fragment>
         )
