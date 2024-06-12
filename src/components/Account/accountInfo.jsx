@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useAuth from '../../hooks/useAuth'
 
@@ -46,7 +46,7 @@ const AccountInfo = () => {
     }
 
     return (
-        <>
+        <Fragment>
             <div className='account-desc'>
                 <div className='title header'>
                     <div className="utils">
@@ -83,13 +83,13 @@ const AccountInfo = () => {
                             }} />
                         </div>
                     </div>
-                </div>
-                <div className='button'>
-                    <button className='secondary' >Reset</button>
-                    <button className='primary' onClick={handleSubmit}>Save</button>
+                    <div className='button'>
+                        <button className='secondary' >Reset</button>
+                        <button className='primary' onClick={handleSubmit}>Save</button>
+                    </div>
                 </div>
             </div>
-        </>
+        </Fragment>
     )
 }
 

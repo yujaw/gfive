@@ -62,7 +62,9 @@ const SignIn = () => {
                     (res) => {
                         const accessToken = res?.data?.accessToken
                         const profileImage = res?.data?.profileImage
-                        setAuth({ email, pass, accessToken, profileImage })
+                        const fname = res?.data?.fname
+                        const lname = res?.data?.lname
+                        setAuth({ email, fname, lname, pass, accessToken, profileImage })
                         navigate(from, { replace: true })
                         successNotification("User logged in")
                     }

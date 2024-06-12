@@ -11,6 +11,7 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
 import Loader from '../Loader'
 import axios from '../../api/axios'
 import { Helmet } from 'react-helmet'
+import Description from './desc'
 // import SingleProductSkeleton from '../Skeletons/SingleProductSkeleton'
 
 const SingleProduct = () => {
@@ -23,6 +24,7 @@ const SingleProduct = () => {
     const [productImage, setProductImage] = useState()
     const [product, setProduct] = useState(null)
     const [images, setImages] = useState([])
+    // const [reviews, setReviews] = useState([])
     // const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -70,11 +72,6 @@ const SingleProduct = () => {
                                         }
                                     </Swiper>
                                     <div className="swiper-nav">
-                                        {/* <div className="nav nav-el-prev">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 320 512">
-                                                <path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z" />
-                                            </svg>
-                                        </div> */}
                                         <Swiper
                                             onSwiper={setProductImage}
                                             // loop={true}
@@ -97,11 +94,6 @@ const SingleProduct = () => {
                                                 ))
                                             }
                                         </Swiper>
-                                        {/* <div className="nav nav-el-next">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 320 512">
-                                                <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-                                            </svg>
-                                        </div> */}
                                     </div>
                                 </div>
                                 <div className='desc'>
@@ -119,15 +111,6 @@ const SingleProduct = () => {
                                                 emptyIcon={<FaStar className='icon unselected' />}
                                                 readOnly
                                             />
-                                            {/* <div className='wish'>
-                                                <button onClick={() => toggleFav(id)}>
-                                                    {
-                                                        favItems.find(items => items === id) ?
-                                                            <BsHeartFill style={{ fill: '#F63528' }} /> :
-                                                            <BsHeart />
-                                                    }
-                                                </button>
-                                            </div> */}
                                         </div>
                                     </div>
                                     <div className='price'>{formatCurrency(product.price)}</div>
@@ -141,7 +124,7 @@ const SingleProduct = () => {
                                         {/* <button type='submit' className='buy primary'>
                                             Buy Now
                                         </button> */}
-                                        <button type='submit' className='buy primary' onClick={() => increaseCartQuantity(id)}>
+                                        <button type='submit' className='buy primary' onClick={() => increaseCartQuantity(id, product.price)}>
                                             Add to Cart
                                         </button>
                                         <button className='wish' onClick={() => toggleFav(id)}>
@@ -154,6 +137,7 @@ const SingleProduct = () => {
                                     </div>
                                 </div>
                             </div>
+                            <Description id={id} />
                         </div>
                     </Fragment>
                 )

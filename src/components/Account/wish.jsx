@@ -51,7 +51,7 @@ const Product = ({ id }) => {
                         <div className="desc">
                             <div className="title">{item.name}</div>
                             <div className="buttons">
-                                <button onClick={() => increaseCartQuantity(item._id)} className="btn primary">Add to Cart</button>
+                                <button onClick={() => increaseCartQuantity(item._id, item.price)} className="btn primary">Add to Cart</button>
                                 <button onClick={() => toggleFav(item._id)} className="btn secondary">Remove from List</button>
                             </div>
                         </div>
@@ -73,7 +73,8 @@ const Wish = () => {
                         <div className="ico" />
                         <div className="ico" />
                         <div className="ico" />
-                    </div>Wishlist
+                    </div>
+                    Wishlist
                 </div>
                 <div className='container wish_cont'>
                     {

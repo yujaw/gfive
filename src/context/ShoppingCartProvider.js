@@ -6,7 +6,6 @@ const ShoppingCartContext = createContext({})
 
 export const ShoppingCartProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false)
-    // const [cartItems, setCartItems] = useState([])
     const [cartItems, setCartItems] = useLocalStorage('Cart', [])
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
 

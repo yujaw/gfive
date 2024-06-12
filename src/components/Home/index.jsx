@@ -20,7 +20,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get('/api/products')
+          .get('/api/products?order=1&page=-1')
           .then((res) => {
             setProduct(res.data.data)
             setAd(res.data.data[2])
@@ -81,6 +81,9 @@ const Home = () => {
             <div className='desc'><span>Desktops</span></div>
           </Link>
         </div>
+        {
+          console.log(product)
+        }
         {
           product?.length > 0 && (
             <div className='store_banner'>
@@ -178,6 +181,7 @@ const Home = () => {
                       }
                     }}
                     modules={[Pagination, A11y]}
+                    // mousewheel={true}
                     direction='horizontal'
                     speed={400}
                     loop={false}
@@ -195,15 +199,17 @@ const Home = () => {
                       }
                     }
                   >
-                    {product.map(item => (
-                      <SwiperSlide className='swiper-slide' key={item._id}>
-                        {
-                          favItems.find(items => items === item._id) ?
-                            <StoreItem {...item} fav={true} /> :
-                            <StoreItem {...item} />
-                        }
-                      </SwiperSlide>
-                    ))}
+                    {
+                      product.map(item => (
+                        <SwiperSlide className='swiper-slide' key={item._id}>
+                          {
+                            favItems.find(items => items === item._id) ?
+                              <StoreItem {...item} fav={true} /> :
+                              <StoreItem {...item} />
+                          }
+                        </SwiperSlide>
+                      ))
+                    }
                   </Swiper>
                   <div className='swiper-pagination swiper-pagination-two'></div>
                 </div>

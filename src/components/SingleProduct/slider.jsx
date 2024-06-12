@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react'
+import { FaStar } from 'react-icons/fa'
 
-const Slider = ({ width, txt }) => {
+const Slider = ({ width, txt, num }) => {
     return (
         <Fragment>
             <div className='rating-cont'>
+                <div className="ico">
+                    <span>{num}</span>
+                    <FaStar className='icon selected' />
+                </div>
                 <div className='rating-slider'>
                     <div
                         className='slide'
