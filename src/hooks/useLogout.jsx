@@ -1,7 +1,7 @@
 import axios from '../api/axios'
 import useAuth from './useAuth'
 
-const LOGOUT_URL = '/logout'
+const LOGOUT_URL = '/auth/logout'
 
 const useLogout = () => {
     const { setAuth } = useAuth()

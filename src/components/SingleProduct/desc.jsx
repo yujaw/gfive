@@ -9,7 +9,6 @@ import { useNavigate, useLocation } from 'react-router-dom'
 const UPLOAD_URI = '/api/products/review'
 
 const Description = ({ id }) => {
-
     const navigate = useNavigate()
     const location = useLocation()
     const [isSelected, setSelected] = useState()
@@ -93,7 +92,7 @@ const Description = ({ id }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`/api/products/${id}`)
+                const res = await axios.get(`/products/${id}`)
                 setReviews(res.data.reviews)
             } catch (err) {
                 console.log(err)
@@ -303,37 +302,44 @@ const Description = ({ id }) => {
                                         }
                                         <div className="rating-container">
                                             {
-                                                reviews.map(item => (
-                                                    <div className="item" key={item.id}>
-                                                        <div className="desc">
-                                                            <div className="title">
-                                                                <Rating
-                                                                    className="ratings"
-                                                                    defaultValue={parseInt(item.rating)}
-                                                                    value={parseInt(item.rating)}
-                                                                    precision={0.5}
-                                                                    icon={<FaStar className='icon selected' />}
-                                                                    emptyIcon={<FaStar className='icon unselected' />}
-                                                                    readOnly
-                                                                />
-                                                                <div className="name">{`${item.email}`}</div>
+                                                reviews.length > 0
+                                                    ? (
+                                                        reviews.map(item => (
+                                                            <div className="item" key={item.id}>
+                                                                <div className="desc">
+                                                                    <div className="title">
+                                                                        <Rating
+                                                                            className="ratings"
+                                                                            defaultValue={parseInt(item.rating)}
+                                                                            value={parseInt(item.rating)}
+                                                                            precision={0.5}
+                                                                            icon={<FaStar className='icon selected' />}
+                                                                            emptyIcon={<FaStar className='icon unselected' />}
+                                                                            readOnly
+                                                                        />
+                                                                        <div className="name">{`${item.email}`}</div>
+                                                                    </div>
+                                                                    <div className="cont">
+                                                                        {item.message}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="image-container">
+                                                                    {
+                                                                        item.images.map((img, index) => (
+                                                                            <img key={index} src={img} alt="rating" />
+                                                                        ))
+                                                                    }
+                                                                </div>
+                                                                <div className="rev-footer">
+                                                                    <span>{new Date(item.date).toLocaleDateString()}</span>
+                                                                </div>
                                                             </div>
-                                                            <div className="cont">
-                                                                {item.message}
-                                                            </div>
-                                                        </div>
-                                                        <div className="image-container">
-                                                            {
-                                                                item.images.map(img => (
-                                                                    <img src={img} alt="rating" />
-                                                                ))
-                                                            }
-                                                        </div>
-                                                        <div className="rev-footer">
-                                                            <span>{new Date().getTime()}</span>
-                                                        </div>
-                                                    </div>
-                                                ))
+                                                        )
+                                                        )) : (
+                                                        <Fragment>
+                                                            <h1>No Reviews Found</h1>
+                                                        </Fragment>
+                                                    )
                                             }
                                         </div>
                                     </div>

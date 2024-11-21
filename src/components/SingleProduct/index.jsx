@@ -30,7 +30,7 @@ const SingleProduct = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`/api/products/${id}`)
+                const res = await axios.get(`/products/${id}`)
                 setProduct(res.data)
                 setImages(res.data.image)
             } catch (err) {

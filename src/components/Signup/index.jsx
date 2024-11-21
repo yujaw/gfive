@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-const REGISTER_URL = '/register'
+const REGISTER_URL = '/users'
 
 const Signup = () => {
 
@@ -71,8 +71,10 @@ const Signup = () => {
         setErrMsg('');
     }, [email, pwd, matchPwd])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
+        alert('asdf')
 
         const emailValid = EMAIL_REGEX.test(email)
         const fnameValid = USER_REGEX.test(fname)
@@ -84,7 +86,7 @@ const Signup = () => {
             return
         }
 
-        if (!check) return errorNotification('You must agree our privacy policy and terms of service')
+        if (!check) return errorNotification('You must agree to our privacy policy and terms of service to continue')
 
         postData(fname, lname, pwd, email)
     }

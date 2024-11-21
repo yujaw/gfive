@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
-import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import axios from '../../api/axios'
 import useLogout from '../../hooks/useLogout'
 import Loader from '../Loader'
 
@@ -9,7 +9,7 @@ const Account = () => {
 
     const { auth } = useAuth()
     const [profile, setProfile] = useState({})
-    const axiosPrivate = useAxiosPrivate()
+    // const axios = useaxios()
     const navigate = useNavigate()
     const location = useLocation()
     const logout = useLogout()
@@ -19,19 +19,20 @@ const Account = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await axiosPrivate
-                    .get(`/api/users/${auth.email}`)
+                await axios
+                    .get(`/users`)
                     .then((res) => {
-                        setProfile(res.data.data)
+                        console.log(res?.data)
+                        setProfile(res?.data.data)
                         setIsLoading(false)
                     })
             } catch (err) {
-                console.log({ err })
-                navigate('/signin', { state: { from: location }, replace: true })
+                // console.log({ err })
+                // navigate('/signin', { state: { from: location }, replace: true })
             }
         }
         fetchData()
-    }, [auth?.email, axiosPrivate, location, navigate])
+    }, [auth?.email, location, navigate])
 
     const uploadImage = async (e) => {
         e.preventDefault()
@@ -42,7 +43,7 @@ const Account = () => {
             reader.onload = async () => {
                 // console.log(reader.result)
                 try {
-                    await axiosPrivate
+                    await axios
                         .post('/api/users', {
                             image: reader.result
                         })

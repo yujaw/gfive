@@ -59,7 +59,7 @@ const SignIn = () => {
                     }
                 )
                 .then(
-                    (res) => {
+                    res => {
                         const accessToken = res?.data?.accessToken
                         const profileImage = res?.data?.profileImage
                         const fname = res?.data?.fname

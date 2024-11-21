@@ -20,7 +20,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get('/api/products?order=1&page=-1')
+          .get('/products?order=1&page=-1')
           .then((res) => {
             setProduct(res.data.data)
             setAd(res.data.data[2])
@@ -37,9 +37,6 @@ const Home = () => {
   const { favItems } = useFavourites()
 
   const navigate = useNavigate();
-  // const routeChange = () => {
-  //   navigate('/product/00eb26dae5a');
-  // }
 
   return (
     isLoading ? (
@@ -81,9 +78,6 @@ const Home = () => {
             <div className='desc'><span>Desktops</span></div>
           </Link>
         </div>
-        {
-          console.log(product)
-        }
         {
           product?.length > 0 && (
             <div className='store_banner'>

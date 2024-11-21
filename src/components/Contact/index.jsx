@@ -2,6 +2,7 @@ import axios from '../../api/axios'
 import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useToast from '../../hooks/useToast'
+import useAuth from '../../hooks/useAuth'
 
 const Map = () => {
 
@@ -20,6 +21,7 @@ const Contact = () => {
 
     const [map, showMap] = useState(false)
     const { errorNotification, successNotification } = useToast()
+    const auth = useAuth()
 
     map ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'scroll'
 
@@ -60,8 +62,8 @@ const Contact = () => {
     }
 
     const [contact, setContact] = useState({
-        name: '',
-        email: '',
+        name: auth?.UserInfo ? `${auth?.fname} ${auth?.lname}` : '',
+        email: auth?.UserInfo ? auth?.UserInfo.email : '',
         phone: '',
         msg: ''
     })

@@ -30,7 +30,7 @@ const Products = () => {
             try {
                 setIsProductLoading(true)
                 await axios
-                    .get(`/api/products?query=${values?.keyword}&sort=${sort?.name}&order=${sort?.order}&page=${page}`)
+                    .get(`/products?query=${values?.keyword}&sort=${sort?.name}&order=${sort?.order}&page=${page}`)
                     .then((res) => {
                         setProduct(res.data.data)
                         setTotal(Math.ceil(res.data.totalCount / 8))
