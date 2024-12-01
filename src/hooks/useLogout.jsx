@@ -9,8 +9,8 @@ const useLogout = () => {
     const logout = async () => {
         try {
             await axios
-                .get(LOGOUT_URL, {
-                    withCredentials: true
+                .post(LOGOUT_URL, {}, {
+                    withCredentials: true,
                 })
                 .then(() => {
                     setAuth({})

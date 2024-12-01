@@ -65,7 +65,7 @@ const Nav = ({ state }) => {
                         {
                             auth?.email ? (
                                 <Link to='./account' className='cont cont_3'>
-                                    <img src={auth?.profileImage || './images/profile.png'} alt='user_profile' />
+                                    <img src={auth?.profileImage} alt='user_profile' />
                                 </Link>
                             ) : (
                                 <Link to='/signin' className='cont cont_2'>
@@ -274,7 +274,7 @@ const Navigation = () => {
                                     auth?.email ?
                                         <Fragment>
                                             <Link to='./account' className='cont cont_3'>
-                                                <img src={auth?.profileImage || './images/profile.png'} alt='user_profile' />
+                                                <img src={auth?.profileImage} alt='user_profile' />
                                             </Link>
                                         </Fragment>
                                         :

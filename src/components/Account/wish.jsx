@@ -15,7 +15,7 @@ const Product = ({ id }) => {
         console.log(id)
         const fetchData = async () => {
             try {
-                await axios.get(`/api/products/${id}`)
+                await axios.get(`/products/${id}`)
                     .then((res) => {
                         setItem(res.data)
                         setIsLoading(false)

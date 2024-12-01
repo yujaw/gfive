@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import useAuth from '../../hooks/useAuth'
 import useInput from '../../hooks/useInput'
-import axios from '../../api/axios'
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 const LOGIN_URL = '/auth'
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -14,21 +14,19 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+")
 const SignIn = () => {
 
     const { setAuth } = useAuth()
-    // const axiosPrivate = useAxiosPrivate()
+    const axiosPrivate = useAxiosPrivate()
 
     const emailRef = useRef()
-    const errRef = useRef()
     const navigate = useNavigate()
     const location = useLocation()
 
     const { successNotification, errorNotification } = useToast()
 
-    const from = location.state?.from?.pathname || '/'
+    // const from = location.state?.from?.pathname || '/'
 
     const [email, resetEmail, emailAttribs] = useInput('email', '')
     const [validEmail, setValidEmail] = useState(false)
     const [pass, setPass] = useState('')
-    const [errMsg, setErrMsg] = useState('')
     // const [check, toggleCheck] = useToggle('persist', false)
 
     useEffect(() => {
@@ -39,39 +37,30 @@ const SignIn = () => {
         setValidEmail(EMAIL_REGEX.test(email))
     }, [email])
 
-    useEffect(() => {
-        setErrMsg('')
-    }, [email, pass])
-
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
-            await axios
+            await axiosPrivate
                 .post(
                     LOGIN_URL,
                     {
                         email,
                         password: pass,
-                    },
-                    {
-                        withCredentials: true,
                     }
                 )
                 .then(
                     res => {
-                        const accessToken = res?.data?.accessToken
-                        const profileImage = res?.data?.profileImage
-                        const fname = res?.data?.fname
-                        const lname = res?.data?.lname
-                        setAuth({ email, fname, lname, pass, accessToken, profileImage })
-                        navigate(from, { replace: true })
+                        const { accessToken, email, profileImage } = res?.data
+                        setAuth({ accessToken, email, profileImage })
+                        navigate('/', { state: { from: location }, replace: true })
                         successNotification("User logged in")
                     }
                 )
             resetEmail()
             setPass('')
         } catch (err) {
+            console.log(err)
             if (!err?.response) {
                 console.log('No Server Response')
             } else if (err.reponse?.status === 400) {
@@ -83,7 +72,6 @@ const SignIn = () => {
             } else {
                 errorNotification('Login Failed')
             }
-            errRef.current.focus()
         }
 
     }
@@ -123,7 +111,6 @@ const SignIn = () => {
                             <span>or</span>
                         </div>
                         <form className="signin_form" onSubmit={handleSubmit}>
-                            <p ref={errRef} aria-live='assertive'>{errMsg}</p>
                             <div className="input_container">
                                 <span className="desc">Email Address</span>
                                 <input

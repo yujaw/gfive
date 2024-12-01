@@ -15,7 +15,7 @@ const Product = ({ id, quantity }) => {
         const fetchData = async () => {
             try {
                 await axios
-                    .get(`/api/products/${id}`)
+                    .get(`/products/${id}`)
                     .then((res) => {
                         setItem(res.data)
                         setIsLoading(false)

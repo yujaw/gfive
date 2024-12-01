@@ -21,7 +21,6 @@ import AuthLayout from '../layouts/authLayout'
 import PersistLogin from '../layouts/persistLogin'
 import Terms from '../components/Terms'
 import Warranty from '../components/Warranty'
-import Productas from '../components/Products'
 
 const Routes = () => {
     const route = useRoutes([
@@ -82,10 +81,6 @@ const Routes = () => {
                                             element: <SingleProduct />
                                         }
                                     ]
-                                },
-                                {
-                                    path: 'pro',
-                                    element: <Productas />
                                 },
                                 {
                                     path: 'about',

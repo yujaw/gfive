@@ -13,7 +13,7 @@ const AccountInfo = () => {
         const fetchData = async () => {
             try {
                 await axiosPrivate
-                    .get(`/api/users/${auth?.email}`)
+                    .get(`/users`)
                     .then((res) => {
                         setUser(res.data.data)
                     })

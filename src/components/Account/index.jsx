@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
-import axios from '../../api/axios'
 import useLogout from '../../hooks/useLogout'
 import Loader from '../Loader'
+import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+
+const USER_URL = '/users'
 
 const Account = () => {
 
-    const { auth } = useAuth()
     const [profile, setProfile] = useState({})
-    // const axios = useaxios()
+    const axiosPrivate = useAxiosPrivate()
     const navigate = useNavigate()
     const location = useLocation()
     const logout = useLogout()
@@ -17,34 +17,54 @@ const Account = () => {
     const imageRef = useRef()
 
     useEffect(() => {
-        const fetchData = async () => {
+        let isMounted = true
+
+        const controller = new AbortController()
+
+        const getUser = async () => {
             try {
-                await axios
-                    .get(`/users`)
-                    .then((res) => {
-                        console.log(res?.data)
-                        setProfile(res?.data.data)
-                        setIsLoading(false)
-                    })
+                const response = await axiosPrivate.get(USER_URL, {
+                    signal: controller.signal
+                })
+
+                isMounted && setProfile(response.data.data)
+                setIsLoading(false)
             } catch (err) {
-                // console.log({ err })
-                // navigate('/signin', { state: { from: location }, replace: true })
+                console.log(err)
+                navigate('/signin', { state: { from: location }, replace: true })
             }
         }
-        fetchData()
-    }, [auth?.email, location, navigate])
+
+        getUser()
+
+        return () => {
+            isMounted = false
+            // controller.abort()
+        }
+    }, [axiosPrivate, location, navigate])
 
     const uploadImage = async (e) => {
         e.preventDefault()
         // console.log('working?')
         const files = e?.target?.files;
         for (let i = 0; i < files.length; i++) {
+            const file = files[0]
+
+            if (file?.size > 2 * 1024 * 1024) {
+                alert("File Size too big")
+                return
+            }
+
+            if (file?.type === '') {
+                alert("Invalid file type")
+                return
+            }
+
             const reader = new FileReader();
             reader.onload = async () => {
-                // console.log(reader.result)
                 try {
-                    await axios
-                        .post('/api/users', {
+                    await axiosPrivate
+                        .put('users', {
                             image: reader.result
                         })
                         .then(() => {
@@ -53,7 +73,8 @@ const Account = () => {
                 } catch (err) {
                     console.log(err)
                 }
-            };
+                return
+            }
             reader.readAsDataURL(files[i]);
         }
     }
@@ -75,7 +96,7 @@ const Account = () => {
                                 <div className='account-navigation'>
                                     <div className='nav-profile'>
                                         <div className='image-container' onClick={() => imageRef.current.click()}>
-                                            <img src={profile.profileImage || './images/profile.png'} alt='Profile' />
+                                            <img src={profile.profileImage} alt='Profile' />
                                             <input type="file" ref={imageRef} hidden onChange={uploadImage} accept='*/image' />
                                             <div className="overlay">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="1rem" viewBox="0 0 512 512">
