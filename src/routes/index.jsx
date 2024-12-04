@@ -28,7 +28,7 @@ const Routes = () => {
             element: <PersistLogin />,
             children: [
                 {
-                    path: '/',
+                    path: '/gfive',
                     element: <Layouts />,
                     children: [
                         {
