@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/gfive/static/css/main.0cb9097e.css",
+    "main.js": "/gfive/static/js/main.e8742654.js",
+    "static/media/board.jpg": "/gfive/static/media/board.020e1c3c2c0a32b5577e.jpg",
+    "index.html": "/gfive/index.html",
+    "static/media/back.svg": "/gfive/static/media/back.8237b0cd092a12da5491.svg",
+    "static/media/grayBackground.svg": "/gfive/static/media/grayBackground.26d1c35f83582d17acde.svg",
+    "static/media/cursor.cur": "/gfive/static/media/cursor.416ff2895f7746972e3a.cur",
+    "main.0cb9097e.css.map": "/gfive/static/css/main.0cb9097e.css.map",
+    "main.e8742654.js.map": "/gfive/static/js/main.e8742654.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cb9097e.css",
+    "static/js/main.e8742654.js"
+  ]
+}
