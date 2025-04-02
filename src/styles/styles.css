@@ -284,9 +284,9 @@ img {
   body .home_nav .nav_links .link a::after {
     content: "";
     width: 100%;
-    height: 1px;
+    height: 0.1rem;
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     left: 0;
     width: 0;
     background: #21313c;
@@ -326,9 +326,21 @@ img {
   body .home_nav .nav_func .func svg {
     aspect-ratio: 1;
   }
+  body .home_nav .nav_func .search svg path {
+    transition: 0.2s ease;
+  }
+  body .home_nav .nav_func .search:hover svg path {
+    stroke: #00684a;
+  }
   body .home_nav .nav_func .cart {
     margin: 0 0 0 2.5rem;
     position: relative;
+  }
+  body .home_nav .nav_func .cart svg {
+    transition: 0.2s ease;
+  }
+  body .home_nav .nav_func .cart:hover svg {
+    fill: #00684a;
   }
   body .home_nav .nav_func .cart .quant {
     position: absolute;
@@ -3225,6 +3237,7 @@ img {
   body .products_container .product_grid_container .products {
     display: grid;
     width: 100%;
+    max-width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
     padding: 0.5rem 0.75rem 0 0.75rem;

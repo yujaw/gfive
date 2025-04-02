@@ -1,5 +1,5 @@
 import axios from 'axios';
-// const BASE_URL = 'http://192.168.1.74:4000';
+// const BASE_URL = 'http://localhost:4000';
 const BASE_URL = 'https://backend-g56l.onrender.com/';
 
 export default axios.create({

@@ -1,5 +1,8 @@
 {
   "name": "gfive",
+  "homepage": "https://gfive.yujawmanandhar.com.np",
+  "description": "Gfive is a web application that provides a platform for users to explore and discover various products and services. It offers a user-friendly interface, advanced search functionality, and personalized recommendations to enhance the shopping experience.",
+  "author": "Yujaw Manandhar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
